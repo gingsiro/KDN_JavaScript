@@ -43,6 +43,9 @@
 	add(30);
 	console.log(calc.total);
 	console.log(add.total);
+	// new로 선언하지 않으면 객체할당이 안됨
+	// 따라서 calc안에서 선언된 변수들은 실행완료와 동시에 사라짐
+	// but f로 함수를 만들며 종료되지 않도록 하고 있기에 function에 접근 가능한 상태로 할당
 </script>
 </head>
 <body>

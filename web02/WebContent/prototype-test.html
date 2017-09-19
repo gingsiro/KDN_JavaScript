@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function Person(name, tall, job){
-		this.name = name;
+		this.name = name; // this. 안쓰면 window. 으로 붙게된다.
 		this.tall = tall;
 		this.job = job;
 	}
@@ -37,6 +37,13 @@
 	calc.add(1);
 	calc.add(1);
 	alert(calc.getSum());
+	
+	/*
+	* OOP(Object Oriented Programming) <-> JavaScript OOP
+	* Encapsulatin : 데이터 은닉 <-> Closer
+	* Inheritance : 상속 <-> Prototype Copy
+	* Polymorphism : 다형성
+	*/
 </script>
 </head>
 <body>
