@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function plus(a, b){
+		a = a || 0;
+		b = b || 0;
+		console.log("a = " + a);
+		console.log("b = " + b);
+		return a + b;
+	}
+	function sumAll(){ // 1개 ~ 여러개의 숫자를 받아 그 합을 반환
+		console.log("매개변수 갯수 : " + arguments.length);
+		var sum = 0;
+		for (var i = 0; i < arguments.length; i++) {
+			sum += arguments[i];
+		}
+		return sum;
+	}
+//	alert(plus()); // undefined가 뜸
+//	alert( plus(3, 4) );
+alert( sumAll(3, 4) );
+alert( sumAll(3, 4, 7, 9) );
+</script>
+</head>
+<body>
+
+</body>
+</html>

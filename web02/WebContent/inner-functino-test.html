@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Inner-Function-Test.html</title>
+<script type="text/javascript">
+	function square(x){
+		console.log("square()");
+	}
+
+	function pythagoras(width, height){
+		function square(x){
+			return x * x;
+		}
+		return Math.sqrt(square(width) + square(height)); 
+	}
+	alert( pythagoras(2, 3) );
+</script>
+</head>
+<body>
+
+</body>
+</html>

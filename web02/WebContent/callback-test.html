@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function callTenTimes(callbackFn){
+		//10회 반복
+		for (var i = 0; i < 10; i++) {
+			callbackFn(i);
+		}
+	}
+	
+	var cb = function(count){
+		console.log("함수 호출" + count);
+	}
+	
+	callTenTimes(cb);
+</script>
+</head>
+<body>
+
+</body>
+</html>

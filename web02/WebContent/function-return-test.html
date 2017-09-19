@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* 	var str = "Hello"; //전역변수
+
+	function summary(num){
+		var str = 'N : '+ num; //지역변수
+		var f = function(){
+			alert(str);
+		}
+		return f;
+	}
+	
+	// 클로저 4가지
+	// 1. 
+	// 2. summary내 메모리 공간(summary 함수 영역)
+	// 3. 반환된 함수 자체
+	// 4. 살아남은 변수 str
+	
+	alert(str);
+	
+	var ff = summary(100);
+	ff();
+	
+	alert(str); */
+	
+	function calc(){
+		var total = 0;
+		var f = function(num){
+			total += num;
+			console.log('total = ' + total);
+		}
+		
+		return f;
+	}
+	
+	var add = calc();
+	add(10);
+	add(20);
+	add(30);	
+</script>
+</head>
+<body>
+
+</body>
+</html>
