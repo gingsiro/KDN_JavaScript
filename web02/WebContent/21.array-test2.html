@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var arr = [3, 4, 5, 6, 7];
+	var arr_temp = [];
+	arr_temp = arr.push(9);
+	alert(`arr = ${arr}, arr.push(9) = ${arr_temp}`); // 뒤에 추가
+	
+	alert(`arr = ${arr}, arr.unshift(11) = ${arr.unshift(11)}`); // 앞에 추가
+	alert(`arr = ${arr}, arr.splice(2, 0, 20, 30) = ${arr.splice(2, 0, 20, 30)}`);
+	// 삭제시작번호, 삭제갯수, 추가값, 추가값...
+	arr.splice(2,2);
+	alert(`arr = ${arr}, arr.splice(2, 1, 20, 30) = ${arr.splice(2, 1, 20, 30)}`);
+	
+	arr.sort(function(left, right){
+		return left-right;
+	});
+	alert("left-right : " + arr);
+	arr.sort(function(left, right){
+		return right-left;
+	});
+	alert("right-left : " + arr);
+	///////////////////////////////////////////////
+	var parr = [];
+	parr.push({name:"남궁현", tall:175});
+	parr.push({name:"이순신", tall:175});
+	parr.push({name:"아이유", tall:158});
+	parr.sort(function(left, right){
+		return left.tall - right.tall;
+	});
+	var str="";
+	for ( var p in parr) {
+		str += parr[p].name + "\n"
+	}
+	alert(str);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
