@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>number_guess</title>
+<script type="text/javascript">
+//	1에서 100사이 난수를 컴퓨터가 지정하면 맞추기
+	var rnd = Math.random()*100+1;
+	rnd = Math.floor(rnd);
+	while(true){
+		var num = prompt("난수를 맞춰보세요.", "1~100사이 숫자에요.");
+		num = Number(num);
+		if(!num){
+			alert("숫자를 입력하세요.")
+			continue;
+		}
+		if(num==rnd)
+			break;
+		if(num < rnd)
+			alert("더 큰 수에요.")
+		else 
+			alert("더 작은 수에요.")
+	}
+	alert("축하해요! 정답이에요!")
+</script>
+</head>
+<body>
+
+</body>
+</html>
