@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	var obj = {}; // JSON형식
+	var obj2 = new Object(); //  
+	obj.name = "남궁현"; // 속성
+	obj.tall = 180;
+	obj.toString = function(){ // 메서드
+		return "name = " + this.name + ", tall = " + this.tall;
+	};
+	alert(`name = ${obj.name}, tall = ${obj.tall}`);
+	alert(obj.toString());
+	///////////////////////////////////////////////////////////////
+	obj2.name = "이순신"; // 속성
+	obj2.tall = 165;
+	obj2.toString = function(){ // 메서드
+		return "tall = " + this.tall + ", name = " + this.name;
+	};
+	alert(obj2.toString());
+	///////////////////////////////////////////////////////////////
+	var obj3 = new Object(); //  
+	obj3['name'] = "남궁현"; // 속성
+	obj3['tall'] = 180;
+	obj3['toString'] = function(){ // 메서드
+		return "name = " + this.name + ", tall = " + this.tall;
+	};
+	alert(obj3.toString());
+	///////////////////////////////////////////////////////////////
+	var obj4 = {
+			name:"아이유",
+			tall:158,
+			toString:function(){
+				return "name = " + this.name + ", tall = " + this.tall;
+			}
+	};
+	alert(obj4.toString());
+	///////////////////////////////////////////////////////////////
+	for ( var k in obj4) {
+		console.log(`${k} : ${obj4[k]}`);
+	}
+	///////////////////////////////////////////////////////////////
+	alert('name' in obj4);
+	alert('age' in obj4);
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

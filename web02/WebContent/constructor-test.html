@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function Person(name, tall, job){
+		this.name = name;
+		this.tall = tall;
+		this.job = job;
+		this.toString = function(){
+			return this.name + ", " + this.tall + ", " + this.job;
+		};
+	}
+	var p1 = new Person("아이유", 158, "가수"); // new = 객체 생성시 공간을 할당받겠다!
+	alert(p1.toString());
+	///////////////////////////////////////////////////////////////////////
+	function Calc(){
+		this.total = 0, // 여기서 this.total과 total의 차이, 왜 ,로 해야함 ? ;이 왜 아니지 ? 
+		this.add = function (num){
+			this.total += num;
+		},		
+		this.getSum = function (){
+			return this.total;
+		}
+	}
+	var calc = new Calc();
+	calc.add(1);
+	calc.add(1);
+	calc.add(1);
+	alert(calc.getSum()); // 3이 출력
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
