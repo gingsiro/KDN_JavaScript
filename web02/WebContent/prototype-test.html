@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function Person(name, tall, job){
+		this.name = name;
+		this.tall = tall;
+		this.job = job;
+	}
+	
+	Person.prototype.toString = function(){
+		return this.name + ", " + this.tall + ", " + this.job;
+	}
+	
+	var p1 = new Person("아이유", 158, "가수"); // new = 객체 생성시 공간을 할당받겠다!
+	alert(p1.toString());
+</script>
+</head>
+<body>
+
+</body>
+</html>
