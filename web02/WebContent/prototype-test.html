@@ -16,6 +16,27 @@
 	
 	var p1 = new Person("아이유", 158, "가수"); // new = 객체 생성시 공간을 할당받겠다!
 	alert(p1.toString());
+	
+	///////////////////////////////////////////////////////////////////////
+	
+	function Calc(){
+		this.total = 0; // 여기서 this.total과 total의 차이, 왜 ,로 해야함 ? ;이 왜 아니지 ? 
+	}
+	
+	Calc.prototype.add = function(){
+		this.total += num;
+	}
+	
+	Calc.prototype.getSum = function(){
+		return this.total;
+	}
+	
+	
+	var calc = new Calc();
+	calc.add(1);
+	calc.add(1);
+	calc.add(1);
+	alert(calc.getSum());
 </script>
 </head>
 <body>
