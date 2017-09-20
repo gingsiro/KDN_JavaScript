@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function (){
+		var h1 = document.querySelector("h1");
+		h1.addEventListener("click", click_h1);
+	}
+	
+	function click_h1(){
+		alert(this.innerHTML);
+	}
+</script>
+</head>
+<body>
+	<h1>헬로 자바스크립트</h1>
+</body>
+</html>
