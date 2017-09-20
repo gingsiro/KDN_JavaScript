@@ -3,14 +3,29 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<script type="text/javascript" src="js/jquery-3.2.1.js">
-	var a;
-	function (){
-		
-	}
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="js/calc.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//$("h1:even").css("border", "5px dotted red");//hide();
+		//$("h1:contains('하이')").css("border", "5px dotted red");//hide();
+		$("#d1 > h1").css("border", "5px dotted red");
+		$("#d1 h1").css("background", "yellow");
+	});
+	var c = calc();
+	c.add(3);
+	c.add(4);
+	alert(c.getTotal());
 </script>
 </head>
 <body>
-
+	<div id="d1">
+		<h1>헬로1</h1>
+		<div>
+			<h1>하이2</h1>
+			<h1>방가3</h1>
+		</div>
+		<h1>안녕4</h1>
+	</div>
 </body>
 </html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(myinit)
+	function myinit(){
+		var count = 0;
+
+		$("#plus").on("click", click_plus);
+		$("#minus").on("click", click_minus);
+		$("#html").on("click", click_html);
+		$("#text").on("click", click_text);
+		
+		function click_plus(){
+			count++;
+			console.log(count);
+			$("#msg").html(count);
+		}
+		function click_minus(){
+			count--;
+			console.log(count);
+			$("#msg").html(count);
+		}
+		function click_html(){
+			$("#msg").html("<img src='pig.jpg'/>");
+		}
+		function click_text(){
+			$("#msg").text("<img src='pig.jpg'/>");
+		}
+	}
+
+</script>
+</head>
+<body>
+	<button id="plus">plus</button>
+	<button id="minus">minus</button>
+	<button id="html">html</button>
+	<button id="text">text</button>
+	<div id="msg"></div>
+</body>
+</html>
