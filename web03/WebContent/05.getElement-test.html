@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function (){
+//		var h1 = document.getElementById("hd1");
+//		alert(h1.innerHTML);
+		var h1arr = document.getElementsByTagName("h1");
+		for ( var i=0 ; i<h1arr.length ; i++) {
+			h1arr[i].innerHTML = "i = " + i;
+		}
+	}
+</script>
+</head>
+<body>
+	<h1 id="hd1">헤더1</h1>
+	<h1 id="hd2">헤더2</h1>
+</body>
+</html>

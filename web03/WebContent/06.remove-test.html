@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function (){
+		var ul = document.querySelector("#ul1");
+		var liarr = document.querySelectorAll("#ul1 > li");
+		ul.removeChild(liarr[1]);
+	}
+</script>
+</head>
+<body>
+	<h1>좋아하는 가수 목록</h1>
+	<ul id="ul1">
+		<li>별뚠뚠</li>
+		<li>어쿠루브</li>
+		<li>디에이드</li>
+		<li>아이유</li>
+		<li>정준일</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function (){
+		var h1 = document.createElement("h1"); // <h1></h1>
+		var h1text = document.createTextNode("헬로"); // "헬로"
+		h1.appendChild(h1text);
+		document.body.appendChild(h1);
+		////
+		var img = document.createElement("img");
+		img.setAttribute("src", "pig.jpg");
+		document.body.appendChild(img);
+		////
+		var div = document.createElement("div");
+		div.innerHTML = "<h1>이미지</h1>";
+		document.body.appendChild(div)
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>
