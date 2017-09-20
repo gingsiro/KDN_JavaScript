@@ -11,29 +11,33 @@
 		var rnd = Math.random()*100+1;
 		rnd = Math.floor(rnd);
 		var count = 0;
+		resetField();
+		$("#start").click(function(){
+			startGame();
+		})
+		$("#stop").click(function(){
+			stopGame();
+		})
+	}
+	function resetField(){
+		$("#field").empty();
 		for (var i = 1 ; i <= 100 ; i++) {
-			var html = $("#field").html() + "<button style='width:40px'>" + i + "</button>";
+			var html = $("#field").html() + "<button>" + i + "</button>";
 			$("#field").html(html);
 			if(i%10 == 0){
 				html = $("#field").html() + "<br/>";
 				$("#field").html(html);
 			}
 		}
-		$("#start").click(function(){
-			startGame();
-		});
-		$("#stop").click(function(){
-			stopGame();
-		})
 	}
 	function startGame(){
-		window.com_num = Math.random() * 100 + 1;
-		window.com_num = Math.floor(window.com_num);
-		$("#field > button").click(click_field_button);
 		score = 1000;
 		var text = "점수 : " + score;
+		window.com_num = Math.random() * 100 + 1;
+		window.com_num = Math.floor(window.com_num);
+		resetField();
+		$("#field > button").click(click_field_button);
 		$("#score").html(text);
-		
 		$("#start").attr('disabled', true);
 		$("#stop").attr('disabled', false);
 	}
@@ -44,26 +48,33 @@
 	}
 	function click_field_button(){
 		var num = Number(this.innerHTML);
+		this.style.background = "yellow";
 		if(window.com_num == num){
-			$("#stop").attr('disabled', true);
-			$("#start").attr('disabled', false);
-			alert("정답이여라~ 점수는 " + score + "점이여라~");
+			this.style.background = "red";
+			this.innerHTML = "정답!!";
+			$("#stop").attr("disabled", true);
+			$("#start").attr("disabled", false);
 			$("#field > button").off();
+			alert("정답이여라~ 점수는 " + score + "점이여라~");
 			return;
 		}
-		score-=50;
+		score -= 50;
 		$("#score").html("점수 : " + score);
 		if(window.com_num < num){
-			alert("더 작은수여라~");
+			this.innerHTML = "DN";
 		} else {
-			alert("더 큰수여라~");
+			this.innerHTML = "UP";
 		}
 	}
 </script>
+<style type="text/css">
+	#field {width:}
+	#field > button { width:55px; height:50px; }
+</style>
 </head>
 <body>
 	<button id="start">게임시작</button>
-	<button id="stop" disabled='true'>게임종료</button>
+	<button id="stop" disabled="true">게임종료</button>
 	<div id="field"></div>
 	<div id="score"></div>
 </body>
