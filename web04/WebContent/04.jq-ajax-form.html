@@ -5,29 +5,24 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript">
-	window.onload = function(){
-		var calc = document.querySelector("#calc");
-		calc.onclick = click_calc;
+	$(myinit)
+	function myinit(){
+		var calc = $("#calc").click(click_calc); // jQueryÇü
 	}//end window.onload
 	
 	function click_calc(){
-		var num1 = document.querySelector("#num1").value;
-		var num2 = document.querySelector("#num2").value;
-		var opr = document.querySelector("#opr");
-		var opr_txt = opr.options[opr.selectedIndex].text;
-		var qstr = "num1=" + num1;
-		qstr += "&opr=" + encodeURIComponent(opr_txt);
-		qstr += "&num2=" + num2;
-		alert(qstr);
+		var num1 = $("#num1").val();
+		var num2 = $("#num2").val();
+		var opr_txt = $("#opr option:selected").text(); // jQueryÇü
 		//////
-		var req = new XMLHttpRequest();
-		req.open("GET", "./jsp/calc.jsp?" + qstr, true);
-		req.onreadystatechange = function(){
-			if(req.readyState == 4){
-				alert(req.responseText);
-			}//end if
-		}//end req.onreadystatechange
-		req.send();
+		var options = {
+			url:"./jsp/calc.jsp",
+			data:{num1:num1, opr:opr, num2:num2},
+			success:function(res_txt){
+				alert(res_txt);
+			}
+		};
+		$.ajax(options);
 	}//end click_calc()
 </script>
 </head>
