@@ -59,18 +59,25 @@
 			url: url,
 			success: function(et_xml){
 				var rssarr = $("item",et_xml);
-				var str="<ul>";
+				var str = "";
 				rssarr.each(function(index, el){
+					str += "<div class='title'>";
 					var title = $("title", el).text();
-					str += "<li>" + title + "</li>";
+					str += title + "</div>";
+					str += "<div class='description'>";
+					var desc = $("description", el).text();
+					str += desc + "</div>";
 				})
-				str += "</ul>";
 				$("#result").html(str);
 			}
 		}
 		$.ajax(options);
 	}
 </script>
+<style type="text/css">
+	.description{ display: none; }
+	.title:hover + .description{ display: block; }
+</style>
 </head>
 <body>
 	<button id="weather">일기 예보</button>
