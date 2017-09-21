@@ -8,7 +8,7 @@
 	$(myinit)
 	function myinit(){
 		$("#naver").click(click_naver);
-		$("#weather").click(click_kma);
+		$("#weather").click(click_weather);
 	}
 	function click_naver(){
 		var url = "./jsp/proxy-naver.jsp";
@@ -26,7 +26,7 @@
 		}
 		$.ajax(options);
 	}
-	function click_kma(){
+	function click_weather(){
 		var url = "./jsp/proxy-kma.jsp";
 		var options = {
 				url: url,
