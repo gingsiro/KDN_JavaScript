@@ -9,6 +9,7 @@
 	function myinit(){
 		$("#naver").click(click_naver);
 		$("#weather").click(click_weather);
+		$("#etnews").click(click_etnews);
 	}
 	function click_naver(){
 		var url = "./jsp/proxy-naver.jsp";
@@ -29,16 +30,43 @@
 	function click_weather(){
 		var url = "./jsp/proxy-kma.jsp";
 		var options = {
-				url: url,
-				success: function(txt){
-					var ahl = $(".ah_l:first .ah_k", txt);
-					var str="<ol>";
-					ahl.each(function(index, el){
-						str += "<li>"+el.innerHTML+"</li>";
-					})
-					str += "</ol>";
-					$("#result").html(str);
-				}
+			url: url,
+			success: function(kma_xml){
+				var datas = $("data", kma_xml);
+				var str="<ul>";
+				datas.each(function(index, el){
+					var h = $("hour", el).text(); //xml에서의 태그와 태그사이 글자
+					var t = $("temp", el).text();
+					var d = $("day", el).text();
+					var p = $("pty", el).text();
+					var s = $("sky", el).text();
+					var ps = Number(p) + Number(s);
+					//var img = "<img src='http://www.kma.go.kr/images/icon/DY/DB0" + ps + ".png'>"
+					//str += "<li>" + ((d==0)? "오늘 " : (d==1)? "내일 " : (d==2)? "모레 " : 0) + (h-3) + "~" + h + "(시)까지 " + t + "℃</li>";
+					var daystr = ["오늘", "내일", "모레"];
+					//str += "<li>" + img + " " + daystr[d] + " " + (h-3) + "~" + h + "(시)까지 " + t + "℃</li>";
+					str += "<li>" + daystr[d] + " " + (h-3) + "~" + h + "(시)까지 " + t + "℃</li>";
+				});
+				str += "</ul>";
+				$("#result").html(str);
+			}
+		}
+		$.ajax(options);
+	}
+	function click_etnews(){
+		var url = "./jsp/proxy-etnews.jsp";
+		var options = {
+			url: url,
+			success: function(et_xml){
+				var rssarr = $("item",et_xml);
+				var str="<ul>";
+				rssarr.each(function(index, el){
+					var title = $("title", el).text();
+					str += "<li>" + title + "</li>";
+				})
+				str += "</ul>";
+				$("#result").html(str);
+			}
 		}
 		$.ajax(options);
 	}
@@ -47,6 +75,7 @@
 <body>
 	<button id="weather">일기 예보</button>
 	<button id="naver">실시간 검색어 순위</button>
+	<button id="etnews">전자신문</button>
 	<div id="result"></div>
 </body>
 </html>
