@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		var req = new XMLHttpRequest();
+		req.open('GET', './jsp/time.jsp', true);
+		req.onreadystatechange = function(){
+			if(req.readyState == 4){
+				alert(req.responseText);
+				
+				var msg = document.querySelector("#msg");
+				msg.innerHTML = req.responseText;
+			}// end if
+		}// end onreadystatechange
+		req.send();
+	}// end window.onload
+</script>
+</head>
+<body>
+	<div id="msg"></div>
+</body>
+</html>

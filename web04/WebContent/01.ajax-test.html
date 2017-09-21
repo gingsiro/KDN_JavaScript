@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		var req = new XMLHttpRequest();
+		req.open('GET', './jsp/time.jsp', false);
+		req.send();
+		alert(req.responseText);
+		
+		var msg = document.querySelector("#msg");
+		msg.innerHTML = req.responseText;
+	}
+</script>
+</head>
+<body>
+	<div id="msg"></div>
+</body>
+</html>
