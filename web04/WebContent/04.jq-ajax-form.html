@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
 <script type="text/javascript">
 	$(myinit)
 	function myinit(){
-		var calc = $("#calc").click(click_calc); // jQueryÇü
+		var calc = $("#calc").click(click_calc); // jQueryí˜•
 	}//end window.onload
 	
 	function click_calc(){
 		var num1 = $("#num1").val();
 		var num2 = $("#num2").val();
-		var opr_txt = $("#opr option:selected").text(); // jQueryÇü
-		//////
+		var opr_txt = $("#opr option:selected").text(); // jQueryí˜•
 		var options = {
-			url:"./jsp/calc.jsp",
+			url:"./jsp/calc.xml.jsp",
 			data:{num1:num1, opr:opr_txt, num2:num2},
-			success:function(res_txt){
-				alert(res_txt);
+			success:function(res_xml){
+				var rs = $("#result", res_xml).text();
+				$("#result").text("ê²°ê³¼ : " + rs);
 			}
 		};
 		$.ajax(options);
@@ -37,6 +37,7 @@
 		<option>%</option>
 	</select>
 	<input type="number" id="num2" size="5">
-	<button id="calc">°è»êÇÏ±â</button>
+	<button id="calc">ê³„ì‚°í•˜ê¸°</button>
+	<div id="result">ê²°ê³¼  : </div>
 </body>
 </html>

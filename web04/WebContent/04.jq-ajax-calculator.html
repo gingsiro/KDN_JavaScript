@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	var num_or = 0;
+	var num_max = 0;
+	$(myinit)
+	function myinit(){
+		$("#calc").click(click_calc); // jQuery형
+		$("#buttons > #numButton").click(click_numButton);
+		$("#buttons > #oprButton").click(click_oprButton);
+		$("#buttons > #oprButton").attr('disabled', true);
+		$("#buttons > #calc").attr('disabled', true);
+		$("#buttons > #cancleButton").click(click_cancleButton);
+	}//end window.onload
+	
+	function click_calc(){
+		var num1 = Number($("#num1").val());
+		var num2 = Number($("#num2").val());
+		var opr_txt = $("#opr").val(); // jQuery형
+		$("#calc_txt").val($("#calc_txt").val() + "=");
+		var options = {
+			url:"./jsp/calc.xml.jsp",
+			data:{num1:num1, opr:opr_txt, num2:num2},
+			success:function(res_xml){
+				var rs = $("#result", res_xml).text();
+				var calc_txt = $("#calc_txt").val();
+				$("#calc_txt").val(calc_txt + rs);
+				num_or = 0;
+			}
+		};
+		$("#buttons > #numButton").attr('disabled', true);
+		$("#buttons > #oprButton").attr('disabled', true);
+		$("#buttons > #calc").attr('disabled', true);
+		$.ajax(options);
+	}//end click_calc()
+	function click_numButton(){
+		var calc_txt = $("#calc_txt").val();
+		$("#buttons > #oprButton").attr('disabled', false);
+		if(num_or == 0 && num_max < 5){
+			if()$("#calc_txt").val(calc_txt + this.innerHTML);
+			var num1_txt = $("#num1").val();
+			num_max++;
+			$("#num1").val(num1_txt + this.innerHTML);
+		} 
+		if(num_or == 1 && num_max < 5) {
+			$("#calc_txt").val(calc_txt + this.innerHTML);
+			var num2_txt = $("#num2").val();
+			num_max++;
+			$("#num2").val(num2_txt + this.innerHTML);
+			$("#buttons > #calc").attr('disabled', false);
+		}
+	}//end click_numButton
+	function click_oprButton(){
+		var calc_txt = $("#calc_txt").val();
+		$("#calc_txt").val(calc_txt + this.innerHTML);
+		$("#opr").val(this.innerHTML);
+		num_or = 1;
+		num_max = 0;
+		$("#buttons > #oprButton").attr('disabled', true);
+	}//end click_oprButton
+	function click_cancleButton(){
+		$("#calc_txt").val("");
+		$("#num1").val("");
+		$("#num2").val("");
+		$("#opr").val("");
+		num_max = 0;
+		num_or = 0;
+		$("#buttons > #numButton").attr('disabled', false);
+		$("#buttons > #oprButton").attr('disabled', true);
+		$("#buttons > #calc").attr('disabled', true);
+		
+		num_or = 0;
+	}//end click_cancleButton
+</script>
+<style type="text/css">
+	#numButton { width:35px; height:35px }
+	#oprButton { width:35px; height:35px }
+	#cancleButton { width:35px; height:35px }
+	#calc { width:70px; height:35px }
+</style>
+</head>
+<body>
+	<h1>Ajax Calculator</h1>
+	<input type="text" id="calc_txt"><br>
+	<div id="buttons">
+		<button id="numButton">7</button><button id="numButton">8</button><button id="numButton">9</button><button id="oprButton">/</button><button id="oprButton">%</button><br>
+		<button id="numButton">4</button><button id="numButton">5</button><button id="numButton">6</button><button id="oprButton">*</button><br>
+		<button id="numButton">1</button><button id="numButton">2</button><button id="numButton">3</button><button id="oprButton">+</button><button id="oprButton">-</button><br>
+		<button id="numButton">0</button><button id="numButton">.</button><button id="cancleButton">C</button><button id="calc">=</button><br>
+	</div>
+	<input type="text" id="num1" size="5" style="display:none;">
+	<input type="text" id="num2" size="5" style="display:none;">
+	<input type="text" id="opr" style="display:none;">
+</body>
+</html>

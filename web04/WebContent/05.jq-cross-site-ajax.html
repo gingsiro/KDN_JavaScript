@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+<script type="text/javascript">
+	$(myinit)
+	function myinit(){
+		$("#naver").click(click_naver);
+	}
+	function click_naver(){
+		var url = "./jsp/proxy-naver.jsp";
+		var options = {
+				url: url,
+				success: function(txt){
+					var ahl = $(".ah_l:first .ah_k", txt);
+					ahl.each(function(index, el){
+						alert(el.innerHTML);
+					})
+				}
+		}
+		$.ajax(options);
+	}
+</script>
+</head>
+<body>
+	<button id="weather">일기 예보</button>
+	<button id="naver">실시간 검색어 순위</button>
+</body>
+</html>
